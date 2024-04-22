@@ -1,3 +1,4 @@
+"use client"
 
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useModal } from "@/hooks/use-modal-store";
