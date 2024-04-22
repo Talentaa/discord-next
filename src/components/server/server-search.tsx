@@ -74,7 +74,7 @@ const ServerSearch = ({
         <CommandInput placeholder="Search all channels and members" />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
-          {data?.length && data.map(({ label, type, data }) => (
+          {!!data?.length && data.map(({ label, type, data }) => (
             <CommandGroup key={label} heading={label}>
               {data?.map(({ id, icon, name }) => (
                 <CommandItem
