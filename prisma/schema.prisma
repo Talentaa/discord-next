@@ -116,7 +116,7 @@ model Message {
 
   deleted Boolean @default(false)
 
-  createAt DateTime @default(now())
+  createdAt DateTime @default(now())
   updateAt DateTime @updatedAt
 
   @@index([channelId])

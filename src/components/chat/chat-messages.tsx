@@ -8,6 +8,7 @@ import { Fragment } from "react";
 
 import ChatItem from "./chat-item";
 import ChatWelcome from "./chat-welcome";
+import { useChatScoket } from "@/hooks/use-chat-socket";
 
 const DATA_FORMAT = "d MMM yyyy, HH:mm"
 
@@ -41,6 +42,8 @@ const ChatMessages = ({
   type
 }: ChatMessagesProps) => {
   const queryKey = `chat:${chatId}`;
+  const addKey = `chat:${chatId}:messages`;
+  const updateKey = `chat:${chatId}:messages:update`
 
   const {
     data,
@@ -54,6 +57,8 @@ const ChatMessages = ({
     paramKey,
     paramValue
   });
+
+  useChatScoket({ queryKey, addKey, updateKey });
 
   if (status === "loading") {
     return (
@@ -96,8 +101,8 @@ const ChatMessages = ({
                 content={message.content}
                 fileUrl={message.fileUrl}
                 deleted={message.deleted}
-                timestamp={format(new Date(message.createAt), DATA_FORMAT)}
-                isUpdated={message.updateAt !== message.createAt}
+                timestamp={format(new Date(message.createdAt), DATA_FORMAT)}
+                isUpdated={message.updateAt !== message.createdAt}
                 socketUrl={socketUrl}
                 socketQuery={socketQuery}
               />

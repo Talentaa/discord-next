@@ -43,7 +43,7 @@ export async function GET(
           }
         },
         orderBy: {
-          createAt: "desc"
+          createdAt: "desc"
         }
       })
     } else {
@@ -60,7 +60,7 @@ export async function GET(
           }
         },
         orderBy: {
-          createAt: "desc"
+          createdAt: "desc"
         }
       })
     };
