@@ -22,7 +22,7 @@ model Profile {
   email    String @db.Text
 
   servers  Server[]
-  memners  Member[]
+  members  Member[]
   channels Channel[]
 
   createdAt DateTime @default(now())
@@ -64,7 +64,7 @@ model Member {
   server   Server @relation(fields: [serverId], references: [id], onDelete: Cascade)
 
   messages       Message[]
-  directMessages DirectionMessage[]
+  directMessages DirectMessage[]
 
   conversationsInitiated Conversation[] @relation("MemberOne")
   conversationsReceived  Conversation[] @relation("MemberTwo")
@@ -117,7 +117,7 @@ model Message {
   deleted Boolean @default(false)
 
   createdAt DateTime @default(now())
-  updateAt DateTime @updatedAt
+  updatedAt DateTime @updatedAt
 
   @@index([channelId])
   @@index([memberId])
@@ -132,13 +132,13 @@ model Conversation {
   memberTwoId String
   memberTwo   Member @relation("MemberTwo", fields: [memberTwoId], references: [id], onDelete: Cascade)
 
-  directMessages DirectionMessage[]
+  directMessages DirectMessage[]
 
   @@unique([memberOneId, memberTwoId])
   @@index([memberTwoId])
 }
 
-model DirectionMessage {
+model DirectMessage {
   id      String  @id @default(uuid())
   content String  @db.Text
   fileUrl String? @db.Text

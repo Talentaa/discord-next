@@ -91,7 +91,7 @@ const ChatInput = ({
                   />
                   <div className="absolute top-7 right-8">
                     <EmojiPicker
-                      onChange={(emoji: string) => field.onChange(`${field.value} ${emoji}`)}
+                      onChange={(emoji: string) => field.onChange(`${field.value}${emoji}`)}
                     />
                   </div>
                 </div>
