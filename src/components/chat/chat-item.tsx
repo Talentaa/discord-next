@@ -121,7 +121,7 @@ const ChatItem = ({
 
   return (
     <div className="relative group flex items-center 
-    hover:bg-black p-4 transition w-full"
+    hover:bg-black/5 p-4 transition w-full"
     >
       <div className="group flex gap-x-2 items-start w-full">
         <div
@@ -149,7 +149,7 @@ const ChatItem = ({
           </div>
           {isImage && (
             <a href={fileUrl}
-              target="_black"
+              target="_blank"
               rel="noopener noreferrer"
               className="relative aspect-square rounded-md 
               mt-2 overflow-hidden border flex 
@@ -165,8 +165,8 @@ const ChatItem = ({
           )}
           {isPDF && (
             <div
-              className="relative flex items-center p-2 mt-2 
-          rounded-md bg-background/10"
+              className="relative flex items-center 
+              p-2 mt-2 rounded-md bg-background/10"
             >
               <FileIcon
                 className="h-10 w-10 fill-indigo-200 stroke-indigo-400"
@@ -185,7 +185,7 @@ const ChatItem = ({
             <p className={cn(
               "text-sm text-zinc-600 dark:text-zinc-300",
               deleted
-              && "italic text-zinc-500 dark:text-zinc-500 text-xs mt-1",
+              && "italic text-zinc-500 dark:text-zinc-400 text-xs mt-1",
             )}>
               {content}
               {isUpdated && !deleted && (
